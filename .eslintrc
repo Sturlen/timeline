@@ -4,16 +4,13 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": false
     }
   },
   "settings": {
     "react": { "version": "detect" }
   },
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended"],
   "rules": {
     "@typescript-eslint/member-delimiter-style": [
       "error",
