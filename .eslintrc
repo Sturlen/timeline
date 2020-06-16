@@ -7,11 +7,16 @@
       "jsx": false
     }
   },
-  "settings": {
-    "react": { "version": "detect" }
+  "env": {
+    "jest": true
   },
-  "extends": ["plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "rules": {
+    "no-undef": "error",
     "@typescript-eslint/member-delimiter-style": [
       "error",
       {
