@@ -1,3 +1,3 @@
-import { tweenNum } from "./tween"
+import { Timeline } from "./Timeline"
 
-export { tweenNum }
+export { Timeline }
