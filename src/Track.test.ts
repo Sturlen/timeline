@@ -1,28 +1,12 @@
-import Track, { NumberKey, TrackArea } from "./Track"
-import { tweenNum } from "./TweenableTypes/TweenableNumber"
-
-describe("TrackArea", () => {
-  it("with two keys, fromKeys creates a single area, with the first key at pos 0 and and last key at pos 1", () => {
-    const areas = TrackArea.fromKeys(
-      [
-        { position: 1, value: 0 },
-        { position: 2, value: 10 },
-      ],
-      tweenNum
-    )
-    expect(areas[0].getPosition(0)).toBe(0)
-    expect(areas[0].getPosition(1)).toBe(10)
-  })
-  it.todo("fromKeys gives an exception if there is less than two keys")
-})
+import Track from "./Track"
 
 describe("The Track object", () => {
   it("Gives the list of keys in the order they exist on the timeline", () => {
-    const a: NumberKey = {
+    const a = {
       position: 0,
       value: 0,
     }
-    const b: NumberKey = {
+    const b = {
       position: 1,
       value: 2,
     }
@@ -32,15 +16,15 @@ describe("The Track object", () => {
     expect(sorted[1].value).toBe(2)
   })
   it("Gives the area that is at a given position", () => {
-    const key1: NumberKey = {
+    const key1 = {
       position: 0,
       value: 0,
     }
-    const key2: NumberKey = {
+    const key2 = {
       position: 1,
       value: 10,
     }
-    const key3: NumberKey = {
+    const key3 = {
       position: 2,
       value: 20,
     }
@@ -51,11 +35,11 @@ describe("The Track object", () => {
     expect(t.getArea(position1).end).toBe(1)
   })
   it("With Keys A at 0 and B at 2, at 50% progress, value should be 1", () => {
-    const a: NumberKey = {
+    const a = {
       position: 0,
       value: 0,
     }
-    const b: NumberKey = {
+    const b = {
       position: 1,
       value: 2,
     }
@@ -64,15 +48,15 @@ describe("The Track object", () => {
     expect(t.getValue(0.5)).toBe(1)
   })
   it("With Keys A at -1, B at 1 and C at 3, at 75% progress, value should be 1", () => {
-    const a: NumberKey = {
+    const a = {
       position: 0,
       value: -1,
     }
-    const b: NumberKey = {
+    const b = {
       position: 1,
       value: 3,
     }
-    const c: NumberKey = {
+    const c = {
       position: 2,
       value: 5,
     }
