@@ -1,3 +1,3 @@
-import { Timeline } from "./Timeline"
+import { TweenableNumber } from "./TweenableTypes/TweenableNumber"
 
-export { Timeline }
+export { TweenableNumber }
