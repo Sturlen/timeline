@@ -32,7 +32,7 @@ export class TrackArea<T> extends Tweenable<T> {
       return tween(1)
     } else {
       //Within Area
-      return tween(0)
+      return tween(relative_current_pos / relative_end_pos)
     }
   }
 

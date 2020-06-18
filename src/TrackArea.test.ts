@@ -55,4 +55,14 @@ describe("getValue", () => {
     expect(area.getValue(2)).toEqual(10)
     expect(area.getValue(3)).toEqual(10)
   })
+  it("at a progress within start and end, return the blended value", () => {
+    const area = new TrackArea(
+      { position: 1, value: 0 },
+      { position: 2, value: 10 },
+      tweenNum
+    )
+    expect(area.getValue(1.25)).toEqual(2.5)
+    expect(area.getValue(1.5)).toEqual(5)
+    expect(area.getValue(1.75)).toEqual(7.5)
+  })
 })
