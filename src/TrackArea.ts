@@ -11,8 +11,8 @@ export class TrackArea<T> extends Tweenable<T> {
     this.start_key = start
     this.end_key = end
   }
-  private start_key: TrackKey<T>
-  private end_key: TrackKey<T>
+  public readonly start_key: TrackKey<T>
+  public readonly end_key: TrackKey<T>
 
   public getValue(position: number): T {
     const tween = (factor: number): T => {
