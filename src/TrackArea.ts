@@ -14,7 +14,7 @@ export class TrackArea<T> extends Tweenable<T> {
   private start_key: TrackKey<T>
   private end_key: TrackKey<T>
 
-  public getValue(progress: number): T {
+  public getValue(position: number): T {
     return this.start_key.value
   }
 
@@ -33,7 +33,7 @@ export class TrackArea<T> extends Tweenable<T> {
         areas.push(new TrackArea<T>(key, next_key, tweener))
         return
       } else {
-        //Last key
+        //Last key does not create an area, since its the end key of the previous
         return
       }
     })
