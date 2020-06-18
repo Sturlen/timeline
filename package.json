@@ -9,7 +9,6 @@
     "lint": "eslint --ignore-path .gitignore .",
     "prebuild": "npm run lint",
     "build": "tsc",
-    "pretest": "npm run lint",
     "test": "jest"
   },
   "keywords": [
