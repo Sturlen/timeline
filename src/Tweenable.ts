@@ -13,7 +13,7 @@ export abstract class Tweenable<T> {
   }
   public readonly start: T
   public readonly end: T
-  private readonly tweener: TweenFunc<T>
+  public readonly tweener: TweenFunc<T>
   public getPosition(factor: number): T {
     return this.tweener(this.start, this.end, factor)
   }
