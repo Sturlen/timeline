@@ -43,7 +43,16 @@ describe("getValue", () => {
       { position: 2, value: 10 },
       tweenNum
     )
-    expect(area.getValue(0)).toBe(5)
-    expect(area.getValue(1)).toBe(5)
+    expect(area.getValue(0)).toEqual(5)
+    expect(area.getValue(1)).toEqual(5)
+  })
+  it("at a progress equal or higher than end, return end value", () => {
+    const area = new TrackArea(
+      { position: 1, value: 5 },
+      { position: 2, value: 10 },
+      tweenNum
+    )
+    expect(area.getValue(2)).toEqual(10)
+    expect(area.getValue(3)).toEqual(10)
   })
 })

@@ -15,7 +15,25 @@ export class TrackArea<T> extends Tweenable<T> {
   private end_key: TrackKey<T>
 
   public getValue(position: number): T {
-    return this.start_key.value
+    const tween = (factor: number): T => {
+      return this.tweener(this.start_key.value, this.end_key.value, factor)
+    }
+    const start_pos = this.start_key.position
+    const end_pos = this.end_key.position
+    const relative_start_pos = start_pos - start_pos
+    const relative_end_pos = end_pos - start_pos
+    const relative_current_pos = position - start_pos
+
+    if (relative_current_pos <= relative_start_pos) {
+      //Before Area
+      return tween(0)
+    } else if (relative_current_pos >= relative_end_pos) {
+      //After Area
+      return tween(1)
+    } else {
+      //Within Area
+      return tween(0)
+    }
   }
 
   public toString(): string {
