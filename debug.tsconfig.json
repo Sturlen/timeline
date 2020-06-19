@@ -1,0 +1,12 @@
+{
+  "include": ["./src/**/*"],
+  "exclude": ["./src/**/*.test.*"],
+  "compilerOptions": {
+    "lib": ["ES2017", "es7", "es6"],
+    "module": "commonjs",
+    "target": "ES5",
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true
+  }
+}
