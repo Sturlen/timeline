@@ -29,23 +29,34 @@ export default class Track<T> {
   }
 
   public getArea(position: number): TrackArea<T> {
-    //Assume areas are ascending
-    for (const area of this.areas) {
-      if (
-        position >= area.start_key.position &&
-        position < area.end_key.position
-      ) {
-        return area
-      } else {
-        //try again in area after
+    const first_position = this.areas[0].start_key.position
+    const last_position = this.areas[this.areas.length - 1].end_key.position
+    if (position <= first_position) {
+      // Before track
+      return this.areas[0]
+    } else if (position >= last_position) {
+      // After track
+      return this.areas[this.areas.length - 1]
+    } else {
+      // Within range
+      for (const area of this.areas) {
+        if (
+          position >= area.start_key.position &&
+          position < area.end_key.position
+        ) {
+          return area
+        } else {
+          //try again in area after
+        }
       }
     }
 
     throw new Error("No area found")
   }
 
-  public getValue(progress: number): T {
-    return this.keys[0].value
+  public getValue(position: number): T {
+    const area = this.getArea(position)
+    return area.getValue(position)
   }
 }
 

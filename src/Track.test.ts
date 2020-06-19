@@ -43,7 +43,7 @@ describe("getArea", () => {
 })
 
 describe("getValue", () => {
-  it("With Keys A at 0 and B at 2, at 50% progress, value should be 1", () => {
+  it("Find the value between two keys (one area)", () => {
     const a = {
       position: 0,
       value: 0,
@@ -56,14 +56,14 @@ describe("getValue", () => {
     const t = new Track(0, 2, keys, tweenNum)
     expect(t.getValue(0.5)).toBe(1)
   })
-  it("With Keys A at -1, B at 1 and C at 3, at 75% progress, value should be 1", () => {
+  it("Finds the value between three keys (more than one area)", () => {
     const a = {
       position: 0,
       value: -1,
     }
     const b = {
       position: 1,
-      value: 3,
+      value: 1,
     }
     const c = {
       position: 2,
@@ -71,6 +71,28 @@ describe("getValue", () => {
     }
     const keys = [a, b, c]
     const t = new Track(-1, 2, keys, tweenNum)
-    expect(t.getValue(0.75)).toBe(4)
+    expect(t.getValue(0)).toBeCloseTo(-1)
+    expect(t.getValue(0.4)).toBeCloseTo(-0.2)
+    expect(t.getValue(1)).toBeCloseTo(1)
+    expect(t.getValue(1.6)).toBeCloseTo(3.4)
+    expect(t.getValue(2)).toBeCloseTo(5)
+  })
+  it("returns the start value and end value when position is before or after, respectively", () => {
+    const a = {
+      position: 0,
+      value: -1,
+    }
+    const b = {
+      position: 1,
+      value: 1,
+    }
+    const c = {
+      position: 2,
+      value: 5,
+    }
+    const keys = [a, b, c]
+    const t = new Track(-1, 2, keys, tweenNum)
+    expect(t.getValue(-122.22)).toBeCloseTo(-1)
+    expect(t.getValue(9999.99)).toBeCloseTo(5)
   })
 })
