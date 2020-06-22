@@ -19,7 +19,14 @@ describe("Creating a color object", () => {
     expect(col.green).toEqual(23)
     expect(col.blue).toEqual(91)
   })
-  it.todo(
-    "Anything larger than or equal to zero becomes zero (undef, null, NaN"
-  )
+  it(" A color value of undef, null, NaN, -Infinity should be the minimi. Infinity should be the maximum", () => {
+    const col1 = new RGBColor(undefined, null, -Infinity)
+    const col2 = new RGBColor(NaN, null, +Infinity)
+    expect(col1.red).toEqual(0)
+    expect(col1.green).toEqual(0)
+    expect(col1.blue).toEqual(0)
+    expect(col2.red).toEqual(0)
+    expect(col2.green).toEqual(0)
+    expect(col2.blue).toEqual(255)
+  })
 })
