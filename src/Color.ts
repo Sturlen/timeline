@@ -29,5 +29,5 @@ const RGB_MAX = 255
 
 /** Clamps colors to values a browser will accept*/
 const clampRGBValues = (val: number): number => {
-  return Math.min(Math.max(val, RGB_MIN), RGB_MAX)
+  return Math.min(Math.max(Math.round(val), RGB_MIN), RGB_MAX)
 }
