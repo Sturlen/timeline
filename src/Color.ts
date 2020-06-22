@@ -6,6 +6,7 @@ export interface Color {
 }
 
 type RGBInput = number | null | undefined
+
 /**
  * Color represeted by 0 to 255 for Red, Green and Blue values.
  */
@@ -22,6 +23,10 @@ export class RGBColor implements Color {
 
   public getRGB(): [number, number, number] {
     return [this.red, this.green, this.blue]
+  }
+
+  public static fromArray(arr: [RGBInput, RGBInput, RGBInput]): RGBColor {
+    return new RGBColor(arr[0], arr[1], arr[2])
   }
 }
 
