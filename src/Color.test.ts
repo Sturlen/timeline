@@ -35,4 +35,11 @@ describe("Creating a color object", () => {
     expect(col1.green).toEqual(100)
     expect(col1.blue).toEqual(255)
   })
+  it("Provides the RGB values in an array", () => {
+    const col1 = new RGBColor(-1, 150, 500)
+    const rgb = col1.getRGB()
+    expect(rgb[0]).toEqual(0)
+    expect(rgb[1]).toEqual(150)
+    expect(rgb[2]).toEqual(255)
+  })
 })
