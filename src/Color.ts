@@ -10,16 +10,24 @@ export interface Color {
  */
 export class RGBColor implements Color {
   constructor(red: number, green: number, blue: number) {
-    this.red = red
-    this.green = green
-    this.blue = blue
+    this.red = clampRGBValues(red)
+    this.green = clampRGBValues(green)
+    this.blue = clampRGBValues(blue)
   }
 
-  public red: number
-  public green: number
-  public blue: number
+  public readonly red: number
+  public readonly green: number
+  public readonly blue: number
 
   public getRGB(): [number, number, number] {
     return [this.red, this.green, this.blue]
   }
+}
+
+const RGB_MIN = 0
+const RGB_MAX = 255
+
+/** Clamps colors to values a browser will accept*/
+const clampRGBValues = (val: number): number => {
+  return Math.min(Math.max(val, RGB_MIN), RGB_MAX)
 }
