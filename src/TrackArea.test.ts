@@ -66,3 +66,14 @@ describe("getValue", () => {
     expect(area.getValue(1.75)).toEqual(7.5)
   })
 })
+
+describe("toString", () => {
+  it("Returns a string with start and end postions", () => {
+    const area = new TrackArea(
+      { position: 1, value: 0 },
+      { position: 2, value: 10 },
+      tweenNum
+    )
+    expect(area.toString()).toContain("[TrackArea]")
+  })
+})
