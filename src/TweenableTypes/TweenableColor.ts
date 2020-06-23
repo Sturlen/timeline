@@ -4,7 +4,7 @@ import Color from "color"
 
 export class TweenableColor extends Tweenable<Color> {
   constructor(start: Color, end: Color, tweener: TweenFunc<Color> = lerpColor) {
-    super(start, end, tweener ?? lerpColor)
+    super(start, end, tweener)
   }
 }
 

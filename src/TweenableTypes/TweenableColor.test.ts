@@ -8,6 +8,20 @@ it("Returns grey when tweening White and Black, with a factor of 50%", () => {
   )
 })
 
+it("Returns lerps correctly when start color has an alpha channels", () => {
+  const color = lerpColor(Color("white").alpha(0.5), Color("black"), 0.5)
+  expect(color.hsv().array()).toEqual(
+    Color([127.5, 127.5, 127.5, 0.75]).hsv().array()
+  )
+})
+
+it("Returns lerps correctly when start color has an alpha channels", () => {
+  const color = lerpColor(Color("white"), Color("black").alpha(0.5), 0.5)
+  expect(color.hsv().array()).toEqual(
+    Color([127.5, 127.5, 127.5, 0.75]).hsv().array()
+  )
+})
+
 it("Returns Black when tweening White and Black, with a factor of 100%", () => {
   const color = lerpColor(Color("white"), Color("black"), 1)
   expect(color.hsv().array()).toEqual(Color("black").hsv().array())
@@ -27,4 +41,12 @@ it("instatiates with a valid Color objext, with default as lerp", () => {
   const tc = new TweenableColor(Color("red"), Color("blue"))
   const color = tc.getPosition(0.5)
   expect(color.rgb().object()).toEqual(Color([0, 255, 0]).rgb().object())
+})
+
+it("instatiates with a valid Color objext, will use the passed function", () => {
+  const tc = new TweenableColor(Color("red"), Color("blue"), () =>
+    Color("black")
+  )
+  const color = tc.getPosition(0.5)
+  expect(color.rgb().object()).toEqual(Color("black").rgb().object())
 })
