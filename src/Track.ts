@@ -39,19 +39,16 @@ export default class Track<T> {
       return this.areas[this.areas.length - 1]
     } else {
       // Within range
-      for (const area of this.areas) {
-        if (
-          position >= area.start_key.position &&
-          position < area.end_key.position
-        ) {
-          return area
-        } else {
-          //try again in area after
-        }
-      }
-    }
 
-    throw new Error("No area found")
+      return (
+        this.areas.find((area) => {
+          return (
+            position >= area.start_key.position &&
+            position < area.end_key.position
+          )
+        }) || this.areas[0] // To avoid returning undefined, haven't found better soulutions yet
+      )
+    }
   }
 
   public getValue(position: number): T {
