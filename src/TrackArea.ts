@@ -40,11 +40,23 @@ export class TrackArea<T> extends Tweenable<T> {
     return `[TrackArea]: From ${this.start_key.position} to ${this.end_key.position}`
   }
 
+  /**
+   *  Create an array of areas in order of key positions. Requires two keys or more.
+   * @param keys Keys to tween between.
+   * @param tweener Tweening function to use between keys
+   */
   public static fromKeys<T>(
     keys: TrackKey<T>[],
     tweener: TweenFunc<T>
   ): TrackArea<T>[] {
     const areas: TrackArea<T>[] = []
+
+    if (keys.length <= 1) {
+      throw new Error(
+        "TrackArea.fromKeys requires atleast two keys to create an area"
+      )
+    }
+
     keys.forEach((key, i) => {
       const next_key = keys[i + 1]
       if (next_key) {

@@ -32,7 +32,15 @@ describe(".fromKeys", () => {
     expect(areas[2].getPosition(1)).toBe(30)
     expect(areas[3]).toBeUndefined()
   })
-  it.todo("gives an exception if there is less than two keys")
+  it("gives an exception if there is less than two keys", () => {
+    expect(() => {
+      TrackArea.fromKeys([{ position: 1, value: 0 }], tweenNum)
+    }).toThrow("fromKeys")
+
+    expect(() => {
+      TrackArea.fromKeys([], tweenNum)
+    }).toThrow("fromKeys")
+  })
   it.todo("fromKeys sorts keys by position")
 })
 
