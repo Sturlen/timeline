@@ -1,4 +1,4 @@
-import TrackKey from "./TrackKey"
+import TrackKey, { sortKeysAsceding } from "./TrackKey"
 import { TrackArea } from "./TrackArea"
 import { TweenFunc } from "./Tweenable"
 
@@ -58,8 +58,4 @@ export default class Track<T> {
     const area = this.getArea(position)
     return area.getValue(position)
   }
-}
-
-function sortKeysAsceding<T>(keys: TrackKey<T>[]): TrackKey<T>[] {
-  return keys.sort((a, b) => a.position - b.position)
 }

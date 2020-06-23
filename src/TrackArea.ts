@@ -1,5 +1,5 @@
 import { Tweenable, TweenFunc } from "./Tweenable"
-import TrackKey from "./TrackKey"
+import TrackKey, { sortKeysAsceding } from "./TrackKey"
 
 /**
  * An area between two keyframes.
@@ -57,7 +57,9 @@ export class TrackArea<T> extends Tweenable<T> {
       )
     }
 
-    keys.forEach((key, i) => {
+    const sorted_keys = sortKeysAsceding(keys)
+
+    sorted_keys.forEach((key, i) => {
       const next_key = keys[i + 1]
       if (next_key) {
         areas.push(new TrackArea<T>(key, next_key, tweener))

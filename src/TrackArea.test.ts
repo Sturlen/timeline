@@ -41,7 +41,21 @@ describe(".fromKeys", () => {
       TrackArea.fromKeys([], tweenNum)
     }).toThrow("fromKeys")
   })
-  it.todo("fromKeys sorts keys by position")
+  it("fromKeys sorts keys by ascendingly by position, regardless of input order", () => {
+    const areas = TrackArea.fromKeys(
+      [
+        { position: 10, value: 5 },
+        { position: 2, value: 20 },
+        { position: 5, value: 10 },
+        { position: 1, value: 30 },
+      ],
+      tweenNum
+    )
+    expect(areas[0].getPosition(0)).toBe(30)
+    expect(areas[0].getPosition(1)).toBe(20)
+    expect(areas[2].getPosition(0)).toBe(10)
+    expect(areas[2].getPosition(1)).toBe(5)
+  })
 })
 
 describe("getValue", () => {

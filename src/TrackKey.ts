@@ -9,3 +9,7 @@ export default interface TrackKey<T> {
 export interface NumberKey extends TrackKey<number> {
   value: number
 }
+
+export function sortKeysAsceding<T>(keys: TrackKey<T>[]): TrackKey<T>[] {
+  return keys.sort((a, b) => a.position - b.position)
+}
